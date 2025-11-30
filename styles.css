@@ -1,0 +1,813 @@
+/* リセット & ベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.4;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* ヘッダー */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* 通知 */
+.notification {
+    display: none;
+    padding: 10px 20px;
+    margin: 10px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    animation: slideDown 0.3s ease;
+}
+
+.notification.show {
+    display: block;
+}
+
+.notification.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.notification.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* メインコンテンツ */
+main {
+    padding: 15px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #667eea;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 週セクション */
+.week-section {
+    background: #e8f4f8;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 2px solid #667eea;
+}
+
+.week-info h3 {
+    font-size: 0.95rem;
+    color: #667eea;
+    margin-bottom: 8px;
+}
+
+.week-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.week-display span {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.week-date-input {
+    padding: 6px 10px;
+    border: 2px solid #667eea;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.week-note {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* 週の合計表示 */
+.week-summary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.week-summary .total-hours {
+    font-size: 1.3rem;
+}
+
+/* 入力フォーム */
+.entry-form {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 8px 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+    background: #e9ecef;
+    cursor: not-allowed;
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-with-unit input {
+    flex: 1;
+}
+
+.unit {
+    color: #666;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* ボタン */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-export {
+    background: #28a745;
+    color: white;
+}
+
+.btn-export:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-danger-outline {
+    background: white;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.btn-danger-outline:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-icon {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    background: transparent;
+    border: 1px solid #ddd;
+}
+
+.btn-icon:hover {
+    background: #f8f9fa;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* 技術分野設定 */
+.config-section {
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    margin-bottom: 0;
+}
+
+.config-display {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.config-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.config-category {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.config-category-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.config-category-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    border: 2px solid #ddd;
+}
+
+.config-category-name {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #333;
+    flex: 1;
+}
+
+.config-category-count {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.config-subcategories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-left: 32px;
+}
+
+.config-subcategory-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #e9ecef;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    color: #495057;
+}
+
+/* インポートセクション */
+.import-section {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    padding: 15px;
+    border-radius: 6px;
+    color: white;
+}
+
+.import-section h2 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.import-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* エクスポートセクション */
+.export-section {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    padding: 15px;
+    border-radius: 6px;
+    color: white;
+    margin-top: 20px;
+}
+
+.export-section h2 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.export-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* インポート・エクスポート（旧スタイル - 互換性のため残す） */
+.import-export-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.io-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.io-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-import {
+    background: white;
+    color: #17a2b8;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-import:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-export {
+    background: white;
+    color: #28a745;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-export:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.io-note {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* データ一覧 */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.list-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 6px 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.data-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+/* 日付グループ */
+.date-group {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
+}
+
+.date-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 12px;
+}
+
+.date-group-date {
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.date-group-total {
+    font-size: 1rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.date-group-items {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* コンパクトなデータ項目 */
+.data-item-compact {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 6px 10px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.data-item-compact:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.compact-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.category-badge-small {
+    display: inline-block;
+    padding: 2px 8px;
+    color: white;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.subcategory-text-small {
+    color: #495057;
+    font-size: 0.85rem;
+    flex: 1;
+}
+
+.hours-text {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.compact-memo {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    cursor: help;
+}
+
+.compact-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.btn-icon-small {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 3px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.btn-icon-small:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.btn-icon-small.btn-danger:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+.placeholder {
+    text-align: center;
+    color: #999;
+    padding: 30px 15px;
+    font-size: 0.95rem;
+}
+
+/* フッター */
+footer {
+    padding: 12px 20px;
+    text-align: center;
+    background: #f8f9fa;
+    color: #666;
+    font-size: 0.8rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+footer p {
+    margin: 3px 0;
+}
+
+/* アニメーション */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+    }
+
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    main {
+        padding: 12px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .section-header h2 {
+        width: 100%;
+    }
+    
+    .config-subcategories {
+        padding-left: 0;
+    }
+
+    .io-buttons {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .btn-import,
+    .btn-export {
+        width: 100%;
+    }
+
+    .list-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .list-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .filter-select,
+    .btn-danger-outline {
+        width: 100%;
+    }
+
+    .date-group-header {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+    }
+    
+    .date-group-total {
+        font-size: 0.9rem;
+    }
+
+    .compact-main {
+        flex-wrap: wrap;
+    }
+    
+    .category-badge-small {
+        font-size: 0.7rem;
+    }
+    
+    .subcategory-text-small {
+        font-size: 0.8rem;
+    }
+}
+
+/* スクロールバーのスタイル */
+.data-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.data-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.data-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.data-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

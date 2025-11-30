@@ -1,0 +1,39 @@
+{
+  "Linuxアプリ": {
+    "color": "#4CAF50",
+    "subcategories": [
+      "プロセス間通信",
+      "チップ間通信",
+      "機器間通信",
+      "オーディオ処理"
+    ]
+  },
+  "Linuxカーネル": {
+    "color": "#2196F3",
+    "subcategories": [
+      "デバイス制御",
+      "デバイス設定"
+    ]
+  },
+  "Linux uboot": {
+    "color": "#FF9800",
+    "subcategories": [
+      "デバイス制御",
+      "デバイス設定"
+    ]
+  },
+  "Linux rootfs": {
+    "color": "#9C27B0",
+    "subcategories": [
+      "デバイス制御",
+      "デバイス設定"
+    ]
+  },
+  "RTOS DSPソフト": {
+    "color": "#F44336",
+    "subcategories": [
+      "デバイス制御",
+      "デバイス設定"
+    ]
+  }
+}
